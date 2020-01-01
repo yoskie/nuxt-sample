@@ -1,27 +1,37 @@
 <template>
   <div class="admin-post-page">
     <section class="update-form">
-      <AdminPostForm :post="loadedPost" />
+      <AdminPostForm :post="loadedPost" @submit="onSubmitted" />
     </section>
   </div>
 </template>
 
 <script>
   import AdminPostForm from '@/components/Admin/AdminPostForm'
+  import axios from 'axios'
 
   export default {
     layout: 'admin',
     components: {
       AdminPostForm
     },
-    data() {
-      return {
-        loadedPost: {
-          author: 'Sample',
-          title: 'Test',
-          content: 'test',
-          thumbnailLink: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
-        }
+    asyncData(context) {
+      return axios
+        .get(`${process.env.FIREBASE_URL}/posts/` +context.params.postId + '.json')
+        .then(res => {
+          return {
+            loadedPost: res.data
+          }
+        })
+        .catch(e => context.error())
+    },
+    methods: {
+      onSubmitted(editedPost) {
+        axios.put(`${process.env.FIREBASE_URL}/posts/` +this.$route.params.postId + '.json', editedPost)
+          .then(res => {
+            this.$router.push('/admin');
+          })
+          .catch(e => console.log(e))
       }
     }
   }
