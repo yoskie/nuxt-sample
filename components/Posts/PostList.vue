@@ -17,7 +17,7 @@
 
   export default {
     components: {
-      PostPreview: PostPreview
+      PostPreview
     },
     props: {
       isAdmin: {

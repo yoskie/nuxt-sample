@@ -45,7 +45,7 @@
   }
 </script>
 
-<style scopted>
+<style scoped>
   .post-preview {
     border: 1px solid #ccc;
     box-shadow: 0 2px 2px #ccc;

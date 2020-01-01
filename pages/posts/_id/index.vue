@@ -31,7 +31,7 @@
         });
       }, 1000)
     }
-  }
+  };
 </script>
 
 <style scoped>
