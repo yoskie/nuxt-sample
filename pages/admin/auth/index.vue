@@ -19,10 +19,6 @@
   export default {
     name: 'AdminAuthPage',
     layout: 'admin',
-    components: {
-      AppControlInput,
-      AppButton
-    },
     data() {
       return {
         isLogin: true
