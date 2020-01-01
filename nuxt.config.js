@@ -30,6 +30,9 @@ module.exports = {
   css: [
     '~assets/styles/main.css'
   ],
+  plugins: [
+    '~plugins/core-components.js'
+  ],
   /*
   ** Build configuration
   */
