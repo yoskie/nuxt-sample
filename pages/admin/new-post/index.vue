@@ -17,11 +17,10 @@
     },
     methods: {
       onSubmitted(postData) {
-        axios.post(process.env.FIREBASE_ENV, {...postData, updatedDate: new Date() })
-          .then(result => {
+        this.$store.dispatch('addPost', postData)
+          .then(() => {
             this.$router.push('/admin');
-          })
-          .catch(e => console.log(e))
+          });
       }
     }
   }
