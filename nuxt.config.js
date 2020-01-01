@@ -3,6 +3,7 @@ const { FIREBASE_ENV } =process.env;
 const { FIREBASE_URL } =process.env;
 
 module.exports = {
+  mode: 'universal',
   /*
   ** Headers of the page
   */
@@ -21,7 +22,14 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#FF0000', height: '4px', duration: 5000 },
+  loadingIndicator: {
+    name: 'circle',
+    color: '#FF1493'
+  },
+  css: [
+    '~assets/styles/main.css'
+  ],
   /*
   ** Build configuration
   */
@@ -43,6 +51,10 @@ module.exports = {
   env: {
     FIREBASE_ENV,
     FIREBASE_URL
+  },
+  transition: {
+    name: 'fade',
+    mode: 'out-in'
   }
 }
 
