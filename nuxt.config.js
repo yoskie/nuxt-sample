@@ -1,3 +1,6 @@
+require('dotenv').config();
+const { FIREBASE_ENV } =process.env;
+
 module.exports = {
   /*
   ** Headers of the page
@@ -35,6 +38,9 @@ module.exports = {
         })
       }
     }
+  },
+  env: {
+    FIREBASE_ENV
   }
 }
 
