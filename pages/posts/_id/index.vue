@@ -15,21 +15,16 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
-    asyncData(context, callback) {
-      setTimeout(() => {
-        callback(null, {
-          loadedPost: {
-            id: '1',
-            title: "First Post (ID: " + context.route.params.id + ")",
-            previewText: 'This is our first post!',
-            author: 'Sample',
-            updatedDate: new Date(),
-            content: 'Dummy text',
-            thumbnail: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
+    asyncData(context) {
+      return axios.get(`${process.env.FIREBASE_URL}/posts/` +context.params.id + '.json')
+        .then(res => {
+          return {
+            loadedPost: res.data
           }
-        });
-      }, 1000)
+        })
+        .catch(e => context.error(e))
     }
   };
 </script>

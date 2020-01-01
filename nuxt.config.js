@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { FIREBASE_ENV } =process.env;
+const { FIREBASE_URL } =process.env;
 
 module.exports = {
   /*
@@ -40,7 +41,8 @@ module.exports = {
     }
   },
   env: {
-    FIREBASE_ENV
+    FIREBASE_ENV,
+    FIREBASE_URL
   }
 }
 
