@@ -1,6 +1,12 @@
 # sample-app
 
-> Nuxt.js project
+This is just testing Nuxt.js application's feature. Thus, backend is relying on Firebase.
+A layout of this architecture is below(very simple though).
+
+## Layout of architecture
+ 
+![Screenshot](simple_architecture_diagram.png)
+will update soon...
 
 ## Build Setup
 
