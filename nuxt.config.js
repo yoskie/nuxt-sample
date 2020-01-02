@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { FIREBASE_ENV } =process.env;
 const { FIREBASE_URL } =process.env;
+const { FB_API_KEY } =process.env;
 
 module.exports = {
   mode: 'universal',
@@ -34,6 +35,13 @@ module.exports = {
     '~plugins/core-components.js',
     '~plugins/date-filter.js'
   ],
+  modules: [
+  '@nuxtjs/axios',
+  ],
+  axios: {
+  baseURL: process.env.FIREBASE_URL,
+    credentials: false
+  },
 
   /*
   ** Build configuration
@@ -55,7 +63,8 @@ module.exports = {
   },
   env: {
     FIREBASE_ENV,
-    FIREBASE_URL
+    FIREBASE_URL,
+    FB_API_KEY
   },
   transition: {
     name: 'fade',
