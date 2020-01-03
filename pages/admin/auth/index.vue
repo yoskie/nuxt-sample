@@ -28,25 +28,14 @@
     },
     methods: {
       onSubmit() {
-        let authUrl =
-          'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
-          process.env.FB_API_KEY;
-        if (!this.isLogin) {
-          authUrl =
-            'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
-            process.env.FB_API_KEY;
-        }
-        this.$axios
-          .$post(authUrl,
-          {
-            email: this.email,
-            password: this.password,
-            returnSecureToken: true
-          }
-        ).then(result => {
-          console.log(result)
+        this.$store.dispatch('authenticateUser', {
+          isLogin: this.isLogin,
+          email: this.email,
+          password: this.password
         })
-          .catch(e => console.log(e));
+          .then(() => {
+            this.$router.push('/admin');
+          })
       }
     }
   }
