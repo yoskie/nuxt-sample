@@ -22,7 +22,7 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#FF0000', height: '4px', duration: 5000 },
+  loading: { color: '#00FF00', height: '4px', duration: 5000 },
   loadingIndicator: {
     name: 'circle',
     color: '#FF1493'

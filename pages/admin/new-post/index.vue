@@ -12,6 +12,7 @@
 
   export default {
     layout: 'admin',
+    middleware: ['auth'],
     components: {
       AdminPostForm
     },
