@@ -16,10 +16,10 @@ const createStore = () => {
       },
       editPost(state, editedPost) {
         const postIndex = state.loadedPosts.findIndex(post => post.id === editedPost.id);
-        state.loadedPosts[postIndex] = editedPost
+        state.loadedPosts[postIndex] = editedPost;
       },
       setToken(state, token) {
-        state.token = token
+        state.token = token;
       }
     },
     actions: {
@@ -39,14 +39,14 @@ const createStore = () => {
           ...post,
           updatedDate: new Date()
         }
-        return axios.post(process.env.FIREBASE_ENV, createdPost)
+        return axios.post(process.env.FIREBASE_ENV + '?auth=' + vuexContext.state.token, createdPost)
           .then(result => {
             vuexContext.commit('addPost', {...createdPost, id: result.data.name})
           })
           .catch(e => console.log(e))
       },
       editPost(vuexContext, editedPost) {
-        return axios.put(`${process.env.FIREBASE_URL}/posts/` + editedPost.id + '.json', editedPost)
+        return axios.put(`${process.env.FIREBASE_URL}/posts/` + editedPost.id + '.json?auth=' + vuexContext.state.token, editedPost)
           .then(res => {
             vuexContext.commit('editPost', editedPost)
           })

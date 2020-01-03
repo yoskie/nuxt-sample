@@ -6,7 +6,7 @@
         <div class="post-detail">Last updated on {{ loadedPost.updatedDate | date }}</div>
         <div class="post-detail">{{ loadedPost.author }}</div>
       </div>
-      <p>{{ loadedPost.content }}</p>
+      <p class="post-content">{{ loadedPost.content }}</p>
     </section>
     <section class="post-feedback">
       <p>Let me know what you think about the post, send a mail to <a href="mailto:feedback@sample.com">feedback@sample.com</a></p>

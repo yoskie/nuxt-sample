@@ -22,10 +22,6 @@
 
 <script>
   export default {
-    components: {
-      AppControlInput,
-      AppButton
-    },
     props: {
       post: {
         type: Object,
