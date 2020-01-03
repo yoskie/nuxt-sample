@@ -1,7 +1,7 @@
 <template>
   <div class="admin-auth-page">
     <div class="auth-container">
-      <form @sumbit.prevent="onSubmit">
+      <form @submit.prevent="onSubmit">
         <AppControlInput type="email" v-model="email">E-Mail Address</AppControlInput>
         <AppControlInput type="password" v-model="password">Password</AppControlInput>
         <AppButton type="submit">{{ isLogin ? 'Login' : 'Sign Up' }}</AppButton>
@@ -24,21 +24,24 @@
         isLogin: true,
         email: '',
         password: ''
-      }
+      };
     },
     methods: {
       onSubmit() {
-        this.$axios.$post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
-          process.env.FB_API_KEY, {
-            email: this.email,
-            password: this.password,
-            returnSecureToken: true
-          }
-        ).then(result => {
-          console.log(result)
-        })
-        .catch(e => console.log(e));
+          this.$axios.$post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
+            process.env.FB_API_KEY, {
+              email: this.email,
+              password: this.password,
+              returnSecureToken: true
+            }
+          ).then(result => {
+            console.log(result)
+          })
+          .catch(e => console.log(e));
       }
+    },
+    mounted() {
+      console.log('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + process.env.FB_API_KEY);
     }
   }
 </script>

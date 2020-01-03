@@ -4,7 +4,6 @@ const { FIREBASE_URL } =process.env;
 const { FB_API_KEY } =process.env;
 
 module.exports = {
-  mode: 'universal',
   /*
   ** Headers of the page
   */
@@ -36,10 +35,10 @@ module.exports = {
     '~plugins/date-filter.js'
   ],
   modules: [
-  '@nuxtjs/axios',
+    '@nuxtjs/axios',
   ],
   axios: {
-  baseURL: process.env.FIREBASE_URL,
+    baseURL: process.env.FIREBASE_URL,
     credentials: false
   },
 
