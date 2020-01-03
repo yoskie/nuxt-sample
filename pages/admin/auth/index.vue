@@ -28,20 +28,26 @@
     },
     methods: {
       onSubmit() {
-          this.$axios.$post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
-            process.env.FB_API_KEY, {
-              email: this.email,
-              password: this.password,
-              returnSecureToken: true
-            }
-          ).then(result => {
-            console.log(result)
-          })
+        let authUrl =
+          'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
+          process.env.FB_API_KEY;
+        if (!this.isLogin) {
+          authUrl =
+            'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
+            process.env.FB_API_KEY;
+        }
+        this.$axios
+          .$post(authUrl,
+          {
+            email: this.email,
+            password: this.password,
+            returnSecureToken: true
+          }
+        ).then(result => {
+          console.log(result)
+        })
           .catch(e => console.log(e));
       }
-    },
-    mounted() {
-      console.log('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + process.env.FB_API_KEY);
     }
   }
 </script>
